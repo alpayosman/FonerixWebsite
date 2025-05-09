@@ -33,15 +33,12 @@
       <img src="images/smoke.png" alt="smoke" id="smoke">
     </div>
     <div class="hero-text" id="heroText">
-      <h1>Fonerix</h1>
-      <p>Solgan Yazilicak</p>
+      <h1>Not Just Present</h1>
+      <p>Leading the Way</p>
     </div>
   </section>
 
   <section id="about" class="about-section">
-    <div class="about-smoke">
-      <img src="images/smoke2.png" id="aboutSmoke" alt="Smoke background bottom">
-    </div>
     <div class="about-content hidden" id="aboutContent">
       <h2>About Us</h2>
       <p>Fonerix LTD. founded in Antalya in 2023, Fonerix draws strength from 20+ years of experience in fashion and footwear.
@@ -76,17 +73,50 @@
       <div class="plans-text">
         <h2>Our Plans</h2>
         <p>
-          We aim to expand across key cities, starting with Istanbul — blending strategic retail insights with strong partner collaborations. 
-          Our future plans involve launching flagship stores and establishing wholesale networks that reflect both global trends and local needs.
+          Our short-term priority is to establish a flagship showroom in Istanbul — Turkey’s largest and most competitive retail hub. With its high demand, 
+          dense premium shopping zones, and intense foot traffic, Istanbul offers unmatched potential for growth. Leveraging our local insights into high-performing areas, 
+          we plan to guide our partners toward impactful market positioning. 
+          From this base, we aim to expand into other key cities, combining strategic retail planning with strong collaborations to build both flagship stores and 
+          a robust wholesale network that aligns with global trends and local demand. 
+          We believe that positioning ourselves in the heart of Istanbul will not only strengthen brand visibility but also serve as a launchpad for nationwide expansion. 
+          Our goal is to create lasting value for our partners through a well-planned and adaptable growth strategy.
         </p>
       </div>
     </div>
   </section>
 
-  <section id="sectors">
-    <h2>Industries We Serve</h2>
-    <p></p>
-  </section>
+<section id="sectors">
+  <h2>Industries We Serve</h2>
+<div class="sector-flex-container" id="sectorContainer">
+  <div class="sector-wrapper">
+    <div class="sector-box" onclick="showInfo('info1', 'right')">
+      <img src="images/buckhead.jpg" alt="Brand 1">
+      <div class="overlay">
+  <img src="images/buckhead-logo.png" alt="Brand 1 Logo" class="brand-logo">
+</div>
+  </div>
+    <div class="sector-info-panel" id="info1">
+      <h3>Brand 1</h3>
+      <p>Brand 1 hakkında detaylı bilgi buraya gelecek.</p>
+      <button onclick="hideInfo()">Close</button>
+    </div>
+  </div>
+
+  <div class="sector-wrapper">
+    <div class="sector-box" onclick="showInfo('info2', 'left')">
+  <img src="images/bereket.png" alt="Brand 2">
+  <div class="overlay">
+    <img src="images/bereket-logo.png" alt="Brand 2 Logo" class="brand-logo">
+  </div>
+</div>
+    <div class="sector-info-panel" id="info2">
+      <h3>Brand 2</h3>
+      <p>Brand 2 hakkında detaylı bilgi buraya gelecek.</p>
+      <button onclick="hideInfo()">Close</button>
+    </div>
+  </div>
+</div>
+</section>
 
   <section class="franchise" id="franchise">
     <form action="https://formsubmit.co/seninmailin@example.com" method="POST">

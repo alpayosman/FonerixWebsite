@@ -39,7 +39,7 @@ nav {
 
 .logo img {
   height: 60px;
-  filter: drop-shadow(0 0 10px #00bfff);
+  filter: drop-shadow(0 0 10px #ffffff);
 }
 
 .menu {
@@ -63,24 +63,24 @@ nav {
   background: #ffffff;
 }
 
-/* Hero */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 150vh; /* Hero yüksekliği esnek olabilir */
   overflow: hidden;
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
 }
 
 .hero-text {
   position: absolute;
   font-size: 3em;
-  top: 60%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1s ease-in-out;
+  z-index: 1;
 }
 
 .hero-text.fade-out {
@@ -88,30 +88,43 @@ nav {
   transition: opacity 1s ease-in-out;
 }
 
+/* Duman Görseli */
 .smoke-overlay {
-  position: relative;
+  position: absolute;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   width: 1200px;
-  height: 1200px;
+  height: 1100px;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .smoke-overlay img {
   width: 100%;
-  max-height: 1500px;
-  transform: translateY(0); /* Parallax başlangıcı */
-  transition: transform 0.2s ease-out;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
+
+#smoke {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  transform: translateY(0); /* scroll için başlangıç pozisyonu */
+}
+
+#smoke.show {
+  opacity: 1;
+}
+
 
 /* About Bölümü */
 .about-section {
-  height: auto;
-  min-height: 100vh;
-  position: relative;
-  z-index: 1;
+  min-height: 70vh;
   padding: 60px 80px;
   box-sizing: border-box;
-
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -119,32 +132,15 @@ nav {
   gap: 60px;
 }
 
-.about-smoke {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1200px;
-  height: 1200px;
-  z-index: -1;
-  pointer-events: none; /* Etkileşimi kapatmak için */
-}
-
-.about-smoke img {
-  width: 100%;
-  max-height: 1500px;
-  transform: translateY(0);
-  transition: transform 0.2s ease-out;
-}
-
 /* Yazı kısmı */
 .about-content {
   color: #009fff;
   text-align: left;
+  margin-bottom: 20%;
   flex: 1 1 500px;
   opacity: 0;
   transform: translateY(0);
-  transition: opacity 1.5s ease, transform 1s ease;
+  transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
 .about-section.show .about-content {
@@ -292,11 +288,114 @@ nav {
 }
 
 .plans-text p {
-  font-size: 1.1em;
+  font-size: 1.3em;
   line-height: 1.6;
 }
 
+/* Sectors */
+#sectors {
+  padding: 60px 40px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
 
+/* Kutuları ve bilgi panellerini yatay hizalar */
+.sector-flex-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* Her kutu + panel grubu */
+.sector-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Marka kutusu */
+.sector-box {
+  position: relative;
+  width: 300px;
+  height: 450px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.sector-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.sector-box:hover img {
+  transform: scale(1.05);
+}
+
+/* Hover efekti */
+.sector-box .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.sector-box:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.overlay img.brand-logo {
+  max-width: 70%;
+  max-height: 50%;
+  object-fit: contain;
+}
+
+/* Bilgi paneli */
+.sector-info-panel {
+  display: none;
+  width: 300px;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sector-info-panel.show {
+  display: block;
+}
 
 
 /* Form */
@@ -420,4 +519,22 @@ footer {
 .footer-content a:hover {
   color: #ffffff;
   text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: 1.8em;
+    padding: 0 20px;
+  }
+
+  .about-section {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .about-photo,
+  .about-content {
+    width: 100%;
+  }
 }
