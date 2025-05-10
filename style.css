@@ -1,0 +1,737 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+  position: fixed; /* absolute yerine fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: linear-gradient(to right, rgba(0, 75, 179, 0.897), rgba(0, 142, 244, 0.788));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 170, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: top 0.3s ease-in-out;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background-color: transparent;
+}
+
+.logo img {
+  height: 60px;
+  filter: drop-shadow(0 0 10px #ffffff);
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.menu a {
+  font-size: 1em;
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.5s;
+}
+
+.menu a:hover {
+  color: rgb(0, 114, 218);
+  background: #ffffff;
+}
+
+.hero {
+  position: relative;
+  height: 150vh;
+  overflow: hidden;
+  background-color: white;
+}
+
+/* Smoke içerisine göreli olarak yazıyı koyacağız */
+.smoke-overlay {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 1100px;
+  z-index: 0;
+  pointer-events: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Artık hero-text burada ve FO logosuna göre tam ortalanır */
+.hero-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-left: 35px;
+  margin-bottom: 127px;
+  color: white;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-text h1 {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  margin: 0.5em 0 0 0;
+}
+
+.hero-text.fade-out {
+  opacity: 0;
+}
+
+/* Smoke resmi */
+.smoke-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-out, opacity 1.5s ease-in-out;
+  opacity: 0;
+  transform: translateY(0);
+}
+
+#smoke.show {
+  opacity: 1;
+}
+
+
+/* About Bölümü */
+.about-section {
+  min-height: 70vh;
+  padding: 60px 80px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+/* Yazı kısmı */
+.about-content {
+  color: #009fff;
+  text-align: left;
+  margin-bottom: 20%;
+  flex: 1 1 500px;
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.about-section.show .about-content {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+.about-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  font-family: 'Lora', serif;
+  font-weight: 600;
+}
+
+.about-content p {
+  font-size: 1.5em;
+  line-height: 1.6;
+  color: #0682cf;
+}
+
+/* Harita görseli */
+.about-photo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-photo img {
+  width: 650px; /* Daha büyük görünmesi için artırıldı */
+  border-radius: 20px;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(0, 76, 255, 0.829), rgba(10, 108, 206, 0.45));
+  box-shadow: 0 0 30px rgba(0, 119, 255, 0.2);
+}
+
+/* Our Strategy */
+.strategy-section {
+  padding: 100px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.strategy-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 🎯 PARALLAX efekti burada */
+  z-index: -1;
+}
+
+.strategy-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.strategy-text {
+  background: rgba(23, 136, 238, 0.712);
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  text-align: center;
+}
+
+.strategy-text h2 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.strategy-text p {
+  font-size: 1.2em;
+  line-height: 1.7;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.strategy-images {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.img-box {
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 24px; /* Kare ama köşeli */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Our Plans */
+.plans-parallax {
+  background-image: url("images/istanbul.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 100px 60px;
+  position: relative;
+}
+
+.plans-content {
+  max-width: 600px;
+}
+
+.plans-text {
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.plans-text h2 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+}
+
+.plans-text p {
+  font-size: 1.3em;
+  line-height: 1.6;
+}
+
+/* Sectors */
+#sectors {
+  padding: 60px 40px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+h2 {
+  font-size: 3rem;              /* Daha büyük görünüm */
+  font-weight: 700;             /* Kalın yazı */
+  text-transform: uppercase;    /* Büyük harfler (isteğe bağlı) */
+  margin-bottom: 60px;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+}
+
+/* Kutuları ve bilgi panellerini yatay hizalar */
+.sector-flex-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* Her kutu + panel grubu */
+.sector-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Marka kutusu */
+.sector-box {
+  position: relative;
+  width: 300px;
+  height: 450px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.sector-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.sector-box:hover img {
+  transform: scale(1.05);
+}
+
+/* Hover efekti */
+.sector-box .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 30px;
+}
+
+.sector-box:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.overlay img.brand-logo {
+  max-width: 70%;
+  max-height: 50%;
+  object-fit: contain;
+}
+/* Panel aktif olduğunda */
+.sector-info-panel.show {
+  display: block;
+}
+
+/* Bilgi paneli (genel) */
+.sector-info-panel {
+  display: none;
+  width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.54); /* Beyaz ama yarı saydam */
+  backdrop-filter: blur(10px); /* Cam efekti */
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  color: #222;
+  font-family: 'Georgia', serif;
+  line-height: 2;
+  position: relative;
+  text-align: left;
+  left: 200px; /* Paneli sağa kaydırır */
+}
+/* Brand 1 kutusu sola kayar */
+.sector-box.active {
+  transform: translateX(-300px);
+  z-index: 2;
+}
+
+/* Tıklanan kutunun overlay'i açık kalır */
+.sector-box.active .overlay {
+  opacity: 1;
+  pointer-events: none;
+}
+
+
+/* X butonu */
+.sector-info-panel .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sector-info-panel .close-btn:hover {
+  color: #000;
+}
+
+/* Link */
+.brand-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.brand-link:hover {
+  text-decoration: underline;
+  color: #000;
+}
+/* Panel 2 aktif olduğunda */
+.sector-info-panel2.show {
+  display: block;
+}
+
+/* Bilgi paneli (panel 2 - siyah panel örneği) */
+.sector-info-panel2 {
+  display: none;
+  width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(245, 25, 25, 0.548); /* Siyah ve opak */
+  backdrop-filter: blur(10px); /* Cam efekti */
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  line-height: 2;
+  position: relative;
+  text-align: left;
+  right: 610px;
+}
+
+/* Brand 2 kutusu sağa kayar (örnek davranış) */
+.sector-box.right-shift {
+  transform: translateX(800px);
+  z-index: 2;
+}
+
+/* Tıklanan kutunun overlay'i açık kalır */
+.sector-box.right-shift .overlay {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* X butonu (panel 2) */
+.sector-info-panel2 .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sector-info-panel2 .close-btn:hover {
+  color: #fff;
+}
+
+/* Link (panel 2 içinde) */
+.sector-info-panel2 .brand-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sector-info-panel2 .brand-link:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+
+/* Form */
+.franchise {
+  background: url("images/forum.png") center center / cover no-repeat;
+  background-attachment: fixed;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  height: auto;
+  min-height: 100vh;
+}
+.franchise form h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+}
+
+.franchise::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* siyah yarı saydam katman */
+  z-index: 0;
+}
+
+.franchise form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 30px 25px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 0 auto 0 5%;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.franchise input,
+.franchise textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95em; /* Hafif daha küçük font */
+}
+
+.franchise button {
+  background-color: #ffffff;
+  color: black;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+
+.franchise button:hover {
+  background-color: #00000075;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 15px #ffffff;
+  transform: scale(1.03);
+}
+
+
+.franchise label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 6px 0;
+  font-size: 0.85em;
+  color: #ddd;
+}
+
+.franchise label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #0066ff; /* modern mavi checkbox */
+  cursor: pointer;
+}
+
+.franchise label a:hover {
+  color: white;
+}
+
+/* Footer */
+.custom-footer {
+  background: linear-gradient(to right, rgba(0, 75, 179, 0.897), rgba(0, 142, 244, 0.788));
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+/* Logo */
+.footer-logo img {
+  width: 200px;
+  height: auto;
+}
+
+/* Contact */
+.footer-contact h4 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.footer-contact p {
+  margin: 8px 0;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-contact a {
+  color: #a9d4ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: #fff;
+}
+
+/* İkon görseller */
+.icon-loc {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+.icon-email {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+
+.footer-policy h4 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.footer-policy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95em;
+}
+
+.footer-policy a {
+  color: #a9d4ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-policy a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-legal {
+  margin-top: 15px;
+  margin-left: 300px;
+  text-align: center;
+  font-size: 1em;
+  color: #ffffff;
+  padding: 0 10px;
+  line-height: 1.5;
+}
