@@ -65,30 +65,12 @@ nav {
 
 .hero {
   position: relative;
-  height: 150vh; /* Hero yüksekliği esnek olabilir */
+  height: 150vh;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: white;
 }
 
-.hero-text {
-  position: absolute;
-  font-size: 3em;
-  top: 46%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-  z-index: 1;
-}
-
-.hero-text.fade-out {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-/* Duman Görseli */
+/* Smoke içerisine göreli olarak yazıyı koyacağız */
 .smoke-overlay {
   position: absolute;
   top: 50px;
@@ -98,24 +80,55 @@ nav {
   height: 1100px;
   z-index: 0;
   pointer-events: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Artık hero-text burada ve FO logosuna göre tam ortalanır */
+.hero-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 127px;
+  color: white;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-text h1 {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  margin: 0.5em 0 0 0;
+}
+
+.hero-text.fade-out {
+  opacity: 0;
+}
+
+/* Smoke resmi */
 .smoke-overlay img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
-}
-
-#smoke {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-out, opacity 1.5s ease-in-out;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  transform: translateY(0); /* scroll için başlangıç pozisyonu */
+  transform: translateY(0);
 }
 
 #smoke.show {
   opacity: 1;
 }
+
+
 
 
 /* About Bölümü */
