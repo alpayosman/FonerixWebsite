@@ -91,6 +91,7 @@ nav {
   position: relative;
   z-index: 1;
   text-align: center;
+  margin-left: 35px;
   margin-bottom: 127px;
   color: white;
   transition: opacity 1s ease-in-out;
@@ -127,8 +128,6 @@ nav {
 #smoke.show {
   opacity: 1;
 }
-
-
 
 
 /* About Bölümü */
@@ -312,6 +311,23 @@ nav {
   text-align: center;
 }
 
+h2 {
+  font-size: 3rem;              /* Daha büyük görünüm */
+  font-weight: 700;             /* Kalın yazı */
+  text-transform: uppercase;    /* Büyük harfler (isteğe bağlı) */
+  margin-bottom: 60px;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+}
+
 /* Kutuları ve bilgi panellerini yatay hizalar */
 .sector-flex-container {
   display: flex;
@@ -369,7 +385,7 @@ nav {
   font-size: 1.6em;
   transition: opacity 0.3s ease;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
 }
 
 .sector-box:hover .overlay {
@@ -394,20 +410,131 @@ nav {
   max-height: 50%;
   object-fit: contain;
 }
-
-/* Bilgi paneli */
-.sector-info-panel {
-  display: none;
-  width: 300px;
-  background: #fff;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
+/* Panel aktif olduğunda */
 .sector-info-panel.show {
   display: block;
+}
+
+/* Bilgi paneli (genel) */
+.sector-info-panel {
+  display: none;
+  width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.54); /* Beyaz ama yarı saydam */
+  backdrop-filter: blur(10px); /* Cam efekti */
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  color: #222;
+  font-family: 'Georgia', serif;
+  line-height: 2;
+  position: relative;
+  text-align: left;
+  left: 200px; /* Paneli sağa kaydırır */
+}
+/* Brand 1 kutusu sola kayar */
+.sector-box.active {
+  transform: translateX(-300px);
+  z-index: 2;
+}
+
+/* Tıklanan kutunun overlay'i açık kalır */
+.sector-box.active .overlay {
+  opacity: 1;
+  pointer-events: none;
+}
+
+
+/* X butonu */
+.sector-info-panel .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sector-info-panel .close-btn:hover {
+  color: #000;
+}
+
+/* Link */
+.brand-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.brand-link:hover {
+  text-decoration: underline;
+  color: #000;
+}
+/* Panel 2 aktif olduğunda */
+.sector-info-panel2.show {
+  display: block;
+}
+
+/* Bilgi paneli (panel 2 - siyah panel örneği) */
+.sector-info-panel2 {
+  display: none;
+  width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(245, 25, 25, 0.548); /* Siyah ve opak */
+  backdrop-filter: blur(10px); /* Cam efekti */
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-family: 'Georgia', serif;
+  line-height: 2;
+  position: relative;
+  text-align: left;
+  right: 610px;
+}
+
+/* Brand 2 kutusu sağa kayar (örnek davranış) */
+.sector-box.right-shift {
+  transform: translateX(800px);
+  z-index: 2;
+}
+
+/* Tıklanan kutunun overlay'i açık kalır */
+.sector-box.right-shift .overlay {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* X butonu (panel 2) */
+.sector-info-panel2 .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sector-info-panel2 .close-btn:hover {
+  color: #fff;
+}
+
+/* Link (panel 2 içinde) */
+.sector-info-panel2 .brand-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sector-info-panel2 .brand-link:hover {
+  text-decoration: underline;
+  color: #fff;
 }
 
 

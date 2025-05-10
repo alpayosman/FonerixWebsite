@@ -84,31 +84,77 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function showInfo(id) {
+  const sectors = document.getElementById("sectors");
+
+  // Arka planı belirle
+  if (id === "info1") {
+    sectors.style.backgroundImage = "url('images/buckhead-bg.png')";
+  } else if (id === "info2") {
+    sectors.style.backgroundImage = "url('images/bereket-bg.png')";
+  }
+
+  sectors.style.backgroundSize = "cover";
+  sectors.style.backgroundPosition = "center";
+
   // Tüm wrapper'ları gizle
   document.querySelectorAll('.sector-wrapper').forEach(wrapper => {
     wrapper.style.display = 'none';
   });
 
-  // Tıklanan bilgi paneli içeren wrapper'ı göster
+  // Aktif wrapper'ı göster
   const activeWrapper = document.getElementById(id).closest('.sector-wrapper');
   activeWrapper.style.display = 'flex';
 
-  // Sadece ilgili paneli göster
-  document.querySelectorAll('.sector-info-panel').forEach(panel => {
-    panel.classList.remove('show');
+  // Tüm panelleri gizle (hem panel1 hem panel2)
+  document.querySelectorAll('.sector-info-panel, .sector-info-panel2').forEach(panel => {
+    panel.classList.remove('show', 'dark');
+    panel.style.marginLeft = '';
+    panel.style.marginRight = '';
   });
-  document.getElementById(id).classList.add('show');
+
+  // Aktif paneli göster
+  const activePanel = document.getElementById(id);
+  activePanel.classList.add('show');
+
+  // Brand 2 için ekstra sınıf ve konum
+  if (id === "info2") {
+    activePanel.classList.add('dark');
+    activePanel.style.marginLeft = 20;
+    activePanel.style.marginRight = 'auto';
+  }
+
+  // Kutuları sıfırla
+  document.querySelectorAll('.sector-box').forEach(box => {
+    box.classList.remove('active', 'right-shift');
+  });
+
+  // Aktif kutuya class ekle
+  const activeBox = activeWrapper.querySelector('.sector-box');
+  if (id === "info1") {
+    activeBox.classList.add('active');
+  } else if (id === "info2") {
+    activeBox.classList.add('right-shift');
+  }
 }
 
 function hideInfo() {
-  // Tüm info panelleri gizle
-  document.querySelectorAll('.sector-info-panel').forEach(panel => {
-    panel.classList.remove('show');
+  document.getElementById("sectors").style.backgroundImage = "";
+
+  // Tüm panelleri kapat (her iki türden)
+  document.querySelectorAll('.sector-info-panel, .sector-info-panel2').forEach(panel => {
+    panel.classList.remove('show', 'dark');
+    panel.style.marginLeft = '';
+    panel.style.marginRight = '';
   });
 
-  // Tüm wrapper'ları geri göster
+  // Tüm wrapper'ları geri getir
   document.querySelectorAll('.sector-wrapper').forEach(wrapper => {
     wrapper.style.display = 'flex';
+  });
+
+  // Kutuları sıfırla
+  document.querySelectorAll('.sector-box').forEach(box => {
+    box.classList.remove('active', 'right-shift');
   });
 }
 
