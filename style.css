@@ -637,44 +637,101 @@ h2::after {
 }
 
 /* Footer */
-footer {
-  background-color: black;
-  color: #ffffff;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 0.9em;
+.custom-footer {
+  background: linear-gradient(to right, rgba(0, 75, 179, 0.897), rgba(0, 142, 244, 0.788));
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: 'Arial', sans-serif;
 }
 
-.footer-content p {
-  margin: 0;
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 10px;
 }
 
-.footer-content a {
+/* Logo */
+.footer-logo img {
+  width: 200px;
+  height: auto;
+}
+
+/* Contact */
+.footer-contact h4 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.footer-contact p {
+  margin: 8px 0;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-contact a {
   color: #a9d4ff;
   text-decoration: none;
-  margin: 0 8px;
   transition: color 0.3s ease;
 }
 
-.footer-content a:hover {
+.footer-contact a:hover {
+  color: #fff;
+}
+
+/* İkon görseller */
+.icon-loc {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+.icon-email {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+
+.footer-policy h4 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.footer-policy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95em;
+}
+
+.footer-policy a {
+  color: #a9d4ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-policy a:hover {
   color: #ffffff;
   text-decoration: underline;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .hero-text {
-    font-size: 1.8em;
-    padding: 0 20px;
-  }
-
-  .about-section {
-    flex-direction: column;
-    padding: 40px 20px;
-  }
-
-  .about-photo,
-  .about-content {
-    width: 100%;
-  }
+.footer-legal {
+  margin-top: 15px;
+  margin-left: 300px;
+  text-align: center;
+  font-size: 1em;
+  color: #ffffff;
+  padding: 0 10px;
+  line-height: 1.5;
 }
