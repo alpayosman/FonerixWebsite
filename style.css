@@ -63,6 +63,52 @@ nav {
   background: #ffffff;
 }
 
+/* Mobil uyumluluk */
+@media (max-width: 1024px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 2rem;
+    position: relative;
+  }
+
+  .logo img {
+    margin-top: auto;
+    height: 70px; 
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  nav.active .menu {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 999;
+    margin-left: auto;
+  }
+
+  .hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+}
+
+
+/* Hero */
+
 .hero {
   position: relative;
   height: 150vh;
