@@ -48,18 +48,20 @@ window.addEventListener("load", () => {
   });
 });
 
-
 const header = document.querySelector("header");
 let lastScrollY = window.scrollY;
 
 window.addEventListener("scroll", () => {
   const currentScrollY = window.scrollY;
 
-  if (currentScrollY < lastScrollY) {
-    // 🔼 Yukarı scroll – header geri gelsin
+  if (currentScrollY <= 0) {
+    // Sayfanın en üstündeyiz – header mutlaka görünsün
+    header.style.top = "0";
+  } else if (currentScrollY < lastScrollY) {
+    // Yukarı scroll – header gelsin
     header.style.top = "0";
   } else {
-    // 🔽 Aşağı scroll – header gizlensin (opsiyonel)
+    // Aşağı scroll – header gizlensin
     header.style.top = "-100px";
   }
 
@@ -86,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function showInfo(id) {
   const sectors = document.getElementById("sectors");
 
-  // Arka planı belirle
   if (id === "info1") {
     sectors.style.backgroundImage = "url('images/buckhead-bg.png')";
   } else if (id === "info2") {
@@ -162,4 +163,57 @@ function toggleMenu() {
   document.querySelector('nav').classList.toggle('active');
 }
 
+//Mobile 
+function showMobileInfo(id) {
+  const sectors = document.getElementById("sectors");
+
+  if (id === "info1") {
+    sectors.style.backgroundImage = "url('images/buckhead-bg.png')";
+  } else if (id === "info2") {
+    sectors.style.backgroundImage = "url('images/bereket-bg.png')";
+  }
+
+  sectors.style.backgroundSize = "cover";
+  sectors.style.backgroundPosition = "center";
+
+  // Tüm panelleri gizle
+  document.querySelectorAll('.sector-info-panel, .sector-info-panel2').forEach(panel => {
+    panel.classList.remove('show', 'dark');
+  });
+
+  // Tüm kutuların overlay'ini sıfırla
+  document.querySelectorAll('.sector-box').forEach(box => {
+    box.classList.remove('active', 'right-shift');
+  });
+
+  // Aktif paneli göster
+  const panel = document.getElementById(id);
+  panel.classList.add('show');
+
+  // Aktif kutunun overlayini aç
+  const box = panel?.previousElementSibling;
+  if (box) {
+    box.classList.add('active');
+  }
+
+  // Bereket için özel sınıf
+  if (id === "info2") {
+    panel.classList.add('dark');
+  }
+}
+
+function hideMobileInfo() {
+  const sectors = document.getElementById("sectors");
+  sectors.style.backgroundImage = "";
+
+  // Panelleri gizle
+  document.querySelectorAll('.sector-info-panel, .sector-info-panel2').forEach(panel => {
+    panel.classList.remove('show', 'dark');
+  });
+
+  // Kutuları sıfırla
+  document.querySelectorAll('.sector-box').forEach(box => {
+    box.classList.remove('active', 'right-shift');
+  });
+}
 

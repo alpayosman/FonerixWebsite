@@ -1,0 +1,370 @@
+
+
+/* Header */
+@media (max-width: 1180px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 2rem;
+    position: relative;
+  }
+
+  .logo img {
+    margin-bottom: auto;
+    height: 60px; 
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  nav.active .menu {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 999;
+    position: absolute;
+    top: 3rem;
+    right: 2rem;
+  
+  }
+
+  .hamburger span {
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+}
+
+/* Hero */
+@media (max-width: 1180px) {
+.hero {
+    position: relative;
+    height: 120vh;
+    width: 100vw;
+    max-width: 1180px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+.smoke-overlay {
+  width: 120vw;
+  height: 120vh;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.smoke-overlay img {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: cover;
+  position: relative;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  max-width: 90%;
+}
+
+.hero-text h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+}
+
+.hero-text p {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 400;
+}
+}
+
+/* About Us */
+@media (max-width: 1180px) {
+  .about-section {
+    padding: 40px 20px ;
+    width: 90vw;;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    margin-top: 10rem;
+  }
+
+  .about-content {
+    width: 90vw;
+  }
+
+  .about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-section p {
+    font-size: 1.1rem; 
+  }
+
+  .about-photo img {
+    width: 90vw;;
+    height: auto;
+    display: block;
+    margin-right: -18px;
+    border-radius: 0;
+  }
+}
+
+/* Our Strategy */
+@media (max-width: 1180px) {
+  .strategy-section {
+    width: 100vw;
+    padding: 60px 20px;
+    background-attachment: scroll;
+  }
+
+  .strategy-section::before {
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .strategy-container {
+    padding: 40px 10px;
+    flex-direction: column;
+    gap: 40px;
+    
+  }
+
+  .strategy-text {
+    width: 100vw;
+    padding: 30px 30px;
+    text-align: center;
+    
+  }
+
+  .strategy-text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .strategy-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .strategy-images {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .img-box {
+    width: 1;
+    max-width: 100vw;
+    height: auto;
+    aspect-ratio: 3 / 2; 
+    border-radius: 16px;
+  }
+
+  .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+/* Our Plans */
+@media (max-width: 1180px) {
+.plans-parallax {
+  width: 100vw;
+  height: 160vh;
+  background-image: url("/images/istanbul.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0vh;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.plans-text {
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  padding: 24px 10px;
+  width: 100vw;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+  .plans-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .plans-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+/* Sector */
+@media (max-width: 1180px) {
+  .sector-flex-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+    .sector-title {
+    display: block;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .sector-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .sector-box {
+    width: 80vw;
+    height: 400px;
+  }
+
+  .sector-box:hover .overlay {
+    opacity: 0;
+  }
+
+  .sector-box.active .overlay {
+    opacity: 1;
+    pointer-events: none;
+  }
+  .sector-box.right-shift .overlay {
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  .overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .sector-info-panel,
+  .sector-info-panel2 {
+    width: 90vw;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    position: relative;
+    margin-top: 10px;
+    border-radius: 12px;
+    text-align: left;
+  }
+
+  .sector-info-panel2 {
+    background: rgba(235, 48, 48, 0.65);
+  }
+
+  .sector-box.active {
+    transform: none;
+  }
+
+  .sector-box.right-shift {
+    transform: none;
+  }
+}
+
+
+
+/* Form */
+@media (max-width: 1180px) {
+  .franchise {
+    width: 100vw;
+    padding: 60px 20px;
+    background: url("images/forum.png") center/cover no-repeat;
+    background-attachment: scroll;
+    box-sizing: border-box;
+  }
+}
+
+/* Footer */
+@media (max-width: 1180px) {
+  .custom-footer {
+    width: 100vw;
+    padding: 40px 20px 20px;
+    box-sizing: border-box;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+    padding: 0 10px;
+    width: 100%;
+  }
+
+  .footer-logo img {
+    width: 200px;
+  }
+
+  .footer-policy,
+  .footer-contact {
+    align-items: center;
+    font-size: 1rem;
+  }
+
+  .footer-contact p {
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1rem;
+  }
+
+  .footer-legal {
+    margin-left: 0;
+    margin-top: 20px;
+    font-size: 0.65rem;
+    padding: 0 15px;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+
+
+
+
+
