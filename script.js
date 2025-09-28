@@ -89,9 +89,9 @@ function showInfo(id) {
   const sectors = document.getElementById("sectors");
 
   if (id === "info1") {
-    sectors.style.backgroundImage = "url('images/buckhead-bg.png')";
+    sectors.style.backgroundImage = "url('images/coqui_bg.jpg')";
   } else if (id === "info2") {
-    sectors.style.backgroundImage = "url('images/bereket-bg.png')";
+    sectors.style.backgroundImage = "url('images/ande_bg.jpg')";
   }
 
   sectors.style.backgroundSize = "cover";
@@ -168,9 +168,9 @@ function showMobileInfo(id) {
   const sectors = document.getElementById("sectors");
 
   if (id === "info1") {
-    sectors.style.backgroundImage = "url('images/buckhead-bg.png')";
+    sectors.style.backgroundImage = "url('images/coqui_bg.jpg')";
   } else if (id === "info2") {
-    sectors.style.backgroundImage = "url('images/bereket-bg.png')";
+    sectors.style.backgroundImage = "url('images/ande_bg.jpg')";
   }
 
   sectors.style.backgroundSize = "cover";
